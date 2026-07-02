@@ -6,6 +6,7 @@ import { Experience } from "@/components/sections/Experience";
 import { Hero } from "@/components/sections/Hero";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { Skills } from "@/components/sections/Skills";
+import { SuminagashiCanvas } from "@/components/suminagashi/SuminagashiCanvas";
 import { getPublicResume } from "@/data/resume";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <>
       <PaperBackground />
+      <SuminagashiCanvas />
       <Header name={basics.name.zh} />
       <main className="mx-auto max-w-4xl px-5 pb-24 pt-24 sm:px-8">
         <Hero basics={basics} />

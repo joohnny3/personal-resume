@@ -1,4 +1,4 @@
-目前進度:步驟 3 完成(已自驗),請你照清單驗證,通過後進入步驟 4(墨流し流體層)
+目前進度:步驟 4 完成(已自驗),請你照清單驗證,通過後進入步驟 5(/print + PDF)
 
 # 個人履歷網站 — 實作小計畫
 
@@ -67,10 +67,10 @@ personal-resume/
   排出 簡介/技能/經歷/專案作品集(主角)/學歷 五區塊;思源宋體、淡米色和紙/夜墨 tokens;完成響應式、深淺色手動切換鈕;背景先放靜態和紙紋理佔位(即步驟 4 的退場方案)。
   **做完怎麼確認**:瀏覽器逐區塊對照 `resume.yaml` 內容無缺漏;DevTools 切 375px 手機寬,無橫向捲軸、字可讀;點切換鈕深淺色正確翻轉、重整後記住選擇。
 
-- [ ] **步驟 4:墨流し(Suminagashi)互動流體層**
-  - [ ] **4a. GPU 流體求解器核心**:Three.js + GLSL、ping-pong 雙 FBO,完整管線 advection → curl / vorticity confinement → divergence → pressure solve(Jacobi)→ gradient subtract;velocity field 與 dye field 分離解析度;pointer 拖曳注入 splat(速度 + 染料)。先用直接 RGB 顯示驗證流體行為。
+- [x] **步驟 4:墨流し(Suminagashi)互動流體層**(2026-07-02 完成;Lighthouse 正式跑分留待你驗證,實測 144Hz 滿刷新率)
+  - [x] **4a. GPU 流體求解器核心**:Three.js + GLSL、ping-pong 雙 FBO,完整管線 advection → curl / vorticity confinement → divergence → pressure solve(Jacobi)→ gradient subtract;velocity field 與 dye field 分離解析度;pointer 拖曳注入 splat(速度 + 染料)。先用直接 RGB 顯示驗證流體行為。
     **怎麼確認**:拖動畫面出現真實流體感——漩渦捲曲(curl 生效)、墨流推擠、慢慢消散;快速甩動有慣性尾流,不是貼圖位移。
-  - [ ] **4b. 減法混色 + 和紙 display shader**:四墨色 墨 `#1a1a1f`/藍 `#16407a`/朱 `#c8372d`/松葉 `#2e6e52` 轉 absorption vector(≈ `-log(inkRGB)`),dye field 累積吸收量,display 以 `paperColor * exp(-absorption)` 合成;疊高/中/低頻三層纖維 noise + 極淡 vignette,底色淡米色和紙;四色極簡選擇 UI(小墨點);深色模式換夜墨紙色並調校墨色顯示。
+  - [x] **4b. 減法混色 + 和紙 display shader**:四墨色 墨 `#1a1a1f`/藍 `#16407a`/朱 `#c8372d`/松葉 `#2e6e52` 轉 absorption vector(≈ `-log(inkRGB)`),dye field 累積吸收量,display 以 `paperColor * exp(-absorption)` 合成;疊高/中/低頻三層纖維 noise + 極淡 vignette,底色淡米色和紙;四色極簡選擇 UI(小墨點);深色模式換夜墨紙色並調校墨色顯示。
     **怎麼確認**:墨看起來是「沉進紙裡」——兩色交疊處變深變沉(減法),不會變亮;近看紙面有纖維顆粒不是平滑純色;邊緣有極淡暗角。
   - **效能與退場(4a/4b 共同)**:手機降 DYE_RES、限制 devicePixelRatio;分頁隱藏暫停模擬;`prefers-reduced-motion` 或無 WebGL 退回步驟 3 的靜態和紙。
     **怎麼確認**:桌機拖曳穩 60fps;手機模擬不卡頓;開系統「減少動態效果」後流體關閉、內容照常;Lighthouse 與步驟 3 基準相比 LCP 無明顯退步。
