@@ -1,0 +1,18 @@
+# 依賴與建置產物
+node_modules/
+.next/
+out/
+*.log
+*.tsbuildinfo
+
+# 個資:絕對不進版本庫(repo 將公開給 GitHub Pages 用)
+# 舊履歷原始檔(含電話地址)
+/chang-yu-cheng-resume.pdf
+# 個資資料源(CI 以 Secret 注入)
+resume.private.yaml
+# 建置產出的 PDF(CI 重新產生)
+public/*.pdf
+
+# 本機環境
+.env*
+.DS_Store

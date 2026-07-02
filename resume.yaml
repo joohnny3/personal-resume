@@ -1,0 +1,440 @@
+# =============================================================
+# resume.yaml — 唯一資料源(公開欄位)
+# - 欄位對齊 JSON Resume(jsonresume.org/schema),依需求擴充
+# - 文案欄位一律 {zh, en} 雙語結構;en 先留空,日後補
+# - 電話、地址、生日在 resume.private.yaml(gitignored),
+#   只有 /print(PDF)建置時才會合併讀取
+# - 標記 TODO 的欄位請於校對時補上
+# =============================================================
+
+meta:
+  version: "1.0"
+  updated: "2026-07-02"
+
+basics:
+  name:
+    zh: 張育誠
+    en: Chang Yu-Cheng
+  nickname:
+    zh: Johnny
+    en: Johnny
+  label:
+    zh: 後端工程師
+    en: Backend Engineer
+  email: johnny31258@gmail.com
+  location:
+    city:
+      zh: 新北市
+      en: New Taipei City, Taiwan
+  summary:
+    zh: >-
+      畢業於龍華科技大學化工與材料工程系,近三年的軟體工程師經驗,
+      開發過企業資源管理系統(ERP)與醫療病患援助計畫系統(PAP)等專案,
+      以系統可維護性、擴展性與穩定性為核心的開發理念,
+      持續深化系統設計與 AI 應用整合能力。
+    en: ""
+  profiles:
+    - network: GitHub
+      username: ""   # TODO(校對時補):GitHub 帳號
+      url: ""        # TODO:https://github.com/<帳號>
+    - network: Medium
+      username: ""   # TODO(校對時補):Medium 帳號
+      url: ""        # TODO:Medium 個人頁連結
+
+work:
+  - company:
+      zh: 采鋐健康整合集團(采照策略顧問股份有限公司)
+      en: Media-WIND Health Group
+    position:
+      zh: 軟體工程師
+      en: Software Engineer
+    location:
+      zh: 台北市信義區
+      en: Taipei, Taiwan
+    startDate: "2025-03"
+    endDate: "2026-04"
+    summary:
+      zh: >-
+        醫療病患援助計畫(PAP)系統重構,負責 PAP 系統重構與醫療專案設定管理功能開發。
+        系統架構調整,包含無狀態化、GitHub Actions CI/CD 建置,
+        以及 ELK Log 查詢與錯誤排查,降低人工開案、部署與後續維護成本。
+      en: ""
+    projects:
+      - name:
+          zh: PAP 病患援助平台
+          en: ""
+        startDate: "2025-03"
+        endDate: "2025-08"
+        purpose:
+          zh: >-
+            PAP 病患援助平台為醫療病患援助計畫的主要服務端,
+            提供病友、醫護人員等不同角色透過同意書簽署、贈藥申請等流程。
+          en: ""
+        highlights:
+          - zh: >-
+              Salesforce API 整合優化:調整 Salesforce API 串接,處理查詢紀錄時使用
+              Laravel Http::pool 並行呼叫多個 Salesforce API,
+              降低外部服務 latency 對使用者查詢體驗的影響。
+            en: ""
+          - zh: >-
+              動態轉址機制開發:開發 PAP 專案 QR Code / LINE 入口的動態轉址流程,
+              讓同一組 QR Code 可依後台設定調整導向頁面,
+              降低重新產生與更換 QR Code 的維護成本。
+            en: ""
+          - zh: >-
+              前端功能維護:協助維護 Vue 3 前端,後端 API 調整頁面流程、
+              表單欄位與資料顯示邏輯。
+            en: ""
+          - zh: >-
+              後端三層式架構導入:將 PAP 平台中複雜的業務流程從 Controller 中抽離,
+              依照 Controller、Service、Repository 的三層式架構整理程式職責,
+              降低 Controller 過度肥大的維護成本。
+            en: ""
+      - name:
+          zh: PAP 專案設定管理平台
+          en: ""
+        startDate: "2025-08"
+        endDate: "2025-09"
+        purpose:
+          zh: >-
+            集中管理不同藥廠專案的設定資料,
+            主要解決過去新專案建立時依賴人工設定、不同專案客製化成本高的問題。
+          en: ""
+        highlights:
+          - zh: >-
+              專案設定管理平台後端 API 開發:使用 Laravel 12 進行 API 開發,
+              負責專案設定、功能開關、狀態轉換、文件與流程設定等多個設定模組。
+              此平台將原本分散於人工設定、資料庫調整與程式修改的設定流程,
+              集中為 API 統一維護,開新 PAP 專案設定時間由約 2 週縮短至約 2 天,
+              減少約 80% 人力設定作業時間。
+            en: ""
+      - name:
+          zh: PAP Infrastructure
+          en: ""
+        startDate: "2025-10"
+        endDate: "2026-04"
+        purpose:
+          zh: >-
+            為提升 PAP 系統的穩定性,進行資料庫升級、無狀態化調整、
+            GitHub Actions CI/CD 建置。整體目標是降低人工部署、環境差異、
+            跨服務除錯成本,讓 PAP 系統更適合維運追蹤與系統擴充。
+          en: ""
+        highlights:
+          - zh: >-
+              CloudSQL 升級與盤點:參與 CloudSQL 升級作業,包含升級前影響評估、
+              備份計畫確認、升級後功能驗證與資料完整性檢查。
+              並盤點 GCP 主機、資料庫連線、醫藥通 2.0 Schema、Migration 與
+              SQL 使用情境,作為後續 DB 整併與系統搬遷依據。
+            en: ""
+          - zh: >-
+              無狀態化與檔案儲存外部化:將 PAP 系統中的上傳文件、同意書、
+              專案文件與簽章相關檔案調整至 S3 Storage 管理,
+              降低應用服務對本機檔案系統的依賴。此調整讓服務更接近無狀態化,
+              提升容器化部署與未來水平擴展的可行性。
+            en: ""
+          - zh: >-
+              GitHub Actions CI/CD 建置:建置 GitHub Actions CI/CD 流程,
+              將程式碼檢查、測試、建置與部署流程自動化。
+              透過自動化部署流程,降低人工上版造成的遺漏與操作風險。
+            en: ""
+          - zh: >-
+              ELK Log 結構規劃:設計專案 Log 至 ELK 的結構調整規劃,
+              定義 API Log 與敏感資訊處理原則,
+              此設計降低無序欄位造成搜尋困難或敏感資料落盤的風險。
+            en: ""
+
+  - company:
+      zh: 傑思愛德威媒體股份有限公司(日商 JS-Adways)
+      en: JS-Adways Media
+    position:
+      zh: 後端工程師
+      en: Backend Engineer
+    location:
+      zh: 台北市信義區
+      en: Taipei, Taiwan
+    startDate: "2023-10"
+    endDate: "2024-11"
+    summary:
+      zh: >-
+        企業資源管理系統(ERP)開發,負責 ERP 系統的後端功能實作,
+        包含 HRMS 的跨系統認證與權限管理、事件驅動通知服務,
+        以及廣告的委刊流程與案件異常檢查框架等。
+      en: ""
+    projects:
+      - name:
+          zh: HRMS system
+          en: ""
+        startDate: "2023-10"
+        endDate: "2024-02"
+        purpose:
+          zh: >-
+            建立公司內部 HRMS 與登入驗證系統,將員工資料、部門組織、
+            角色權限與跨子系統登入驗證整合。同時也是 ERP 內各子系統的
+            身份識別與權限管理,提供 JWT-based 身份驗證與權限查詢機制,
+            讓其他內部系統可統一確認使用者身份,
+            並依角色、部門與系統權限判斷可操作範圍。
+          en: ""
+        highlights:
+          - zh: >-
+              JWT 認證機制:實作以 JWT token 為核心的登入驗證,
+              透過 token 驗證使用者身份。此設計讓 ERP 內不同的子系統
+              能共用一致的 Authentication 流程,降低跨系統登入成本。
+            en: ""
+          - zh: >-
+              API 文件整合:導入 L5-Swagger 以程式碼註解方式生成 API 文件,
+              使 API 文件能隨後端程式碼一併更新,
+              降低文件與實作不同步的維護成本。
+            en: ""
+      - name:
+          zh: Notify system
+          en: ""
+        startDate: "2024-02"
+        endDate: "2024-03"
+        purpose:
+          zh: >-
+            建立公司內部多渠道通知服務,支援 Email、LINE 等通知渠道。
+            提供 ERP 各子系統統一的通知任務建立與發送流程。
+          en: ""
+        highlights:
+          - zh: >-
+              Scheduler 與 Queue 發送流程設計:使用 Laravel Scheduler
+              定時掃描待發送通知任務,依發送時間與處理狀態篩選符合條件的資料,
+              並將實際發送工作派送至 Queue。透過 Worker 非同步處理
+              Email / LINE 發送,將「任務掃描」與「通知發送」分離。
+            en: ""
+      - name:
+          zh: Campaign system
+          en: ""
+        startDate: "2024-03"
+        endDate: "2024-10"
+        purpose:
+          zh: >-
+            開發公司內部廣告委刊管理系統,支援業務、AE、PM、主管與財務等角色協作,
+            涵蓋委刊建立、產品/賣法設定、合約條件、退佣計算、財務報表、
+            收入發票紀錄、異常判斷與主管簽核等流程。
+          en: ""
+        highlights:
+          - zh: >-
+              開發委刊案件生命週期管理:實作廣告委刊從建立、送審、執行、
+              財務確認到結案的流程狀態控管,支援 AE、PM、主管與財務等
+              不同角色在同一案件流程中協作,降低跨部門溝通與人工追蹤成本。
+            en: ""
+          - zh: >-
+              實作異常檢查框架,降低人工審核成本:使用設計模式 Strategy Pattern
+              設計案件異常檢查機制,將合約、金額、收入、退佣、產品條件等
+              檢查邏輯拆成可擴充策略,並由 Exception Service 統一管理。
+              當新增異常規則時,不需要修改主流程,只需新增對應檢查策略,
+              提升維護性與擴充性,此功能有效協助減少 40% 人工審核時間。
+            en: ""
+      - name:
+          zh: Audit Log system
+          en: ""
+        startDate: "2024-10"
+        endDate: "2024-11"
+        purpose:
+          zh: >-
+            公司員工操作紀錄機制,集中記錄 ERP 各子系統中的登入、
+            資料異動、審核與操作人員等紀錄。
+          en: ""
+        highlights:
+          - zh: >-
+              操作紀錄寫入流程開發:針對 ERP 子系統設計共用 Audit Log 模組,
+              將操作紀錄邏輯封裝為內部 Composer Package,
+              提供統一的接口給 HRMS、Campaign、Notify 等子系統使用。
+            en: ""
+
+  - company:
+      zh: 臺北大眾捷運股份有限公司
+      en: Taipei Metro
+    position:
+      zh: 機電工程員(機電技師/工程師)
+      en: Vehicle Engineer
+    location:
+      zh: 台北市中山區
+      en: Taipei, Taiwan
+    startDate: "2019-06"
+    endDate: "2023-02"
+    summary:
+      zh: ""
+      en: ""
+    highlights:
+      - zh: >-
+          耐久性測試和分析:對 500+ 零件進行耐久性測試,分析結果並提出改進策略,
+          提高零件平均使用壽命 30%。
+        en: ""
+      - zh: >-
+          專案和維修管理:與多位原廠工程師合作,優化維修流程和排程管理,
+          縮短專案完成平均時間約 15%。
+        en: ""
+
+education:
+  - institution:
+      zh: 龍華科技大學
+      en: Lunghwa University of Science and Technology
+    area:
+      zh: 化工與材料工程系
+      en: Chemical and Materials Engineering
+    studyType:
+      zh: 大學畢業
+      en: Bachelor
+    startDate: "2014-09"
+    endDate: "2017-06"
+  - institution:
+      zh: 勞動部勞動力發展署
+      en: Workforce Development Agency, Ministry of Labor
+    area:
+      zh: 後端開發課程
+      en: Backend Development Program
+    studyType:
+      zh: 職業訓練
+      en: Training Program
+    startDate: "2023-03"
+    endDate: "2023-09"
+
+skills:
+  - name:
+      zh: Backend
+      en: Backend
+    keywords: [PHP, Laravel, Python, JavaScript]
+    details:
+      - zh: 熟悉 PHP 與 Laravel Framework,能進行 RESTful API 開發、後端功能實作、系統重構與模組化設計。
+        en: ""
+      - zh: 熟悉 Service / Repository 架構,能將 Controller、Service、Repository 分層,降低 Controller 過度肥大與業務邏輯分散的維護成本。
+        en: ""
+      - zh: 熟悉 JWT Authentication 與 Authorization 設計,具備跨系統登入驗證、角色權限、部門權限與系統頁面權限實作經驗。
+        en: ""
+      - zh: 熟悉 Laravel Scheduler、Queue Worker 非同步處理,具備提醒任務、背景排程與狀態追蹤開發經驗。
+        en: ""
+      - zh: 熟悉使用適合的 Design Pattern 處理複雜商業邏輯,能依照規則變動性、流程分支與擴充需求,將判斷邏輯拆分為可維護、可替換的模組。
+        en: ""
+      - zh: 熟悉串接第三方 API,具備 Salesforce Apex REST、LINE、LLM 等外部服務整合經驗。
+        en: ""
+      - zh: 熟悉 L5-Swagger API 文件撰寫,降低文件與實作不同步造成的維護成本。
+        en: ""
+      - zh: 程式碼重視 SOLID、PSR-12 程式碼風格規範撰寫。
+        en: ""
+      - zh: 理解 SDD 工作流,在開發前先釐清 High-level、API 規格、資料流程、邊界條件,讓需求、設計與實作方向先對齊,降低後續反覆修改成本。
+        en: ""
+      - zh: 理解 TDD 工作流,能針對負責功能撰寫 Feature Test / Unit Test,驗證商業邏輯與異常情境,降低功能調整與重構時的回歸風險。
+        en: ""
+  - name:
+      zh: Frontend
+      en: Frontend
+    keywords: [Vue 3, HTML, CSS, Bootstrap, Tailwind CSS]
+    details:
+      - zh: 具備 Vue3 前端維護經驗,能進行 API 串接、頁面功能調整。
+        en: ""
+      - zh: 使用 Bootstrap、Tailwind CSS 進行 UI 樣式調整。
+        en: ""
+  - name:
+      zh: Database
+      en: Database
+    keywords: [MySQL, PostgreSQL, pgvector, MongoDB, Redis]
+    details:
+      - zh: 熟悉 MySQL 關聯式資料庫設計,具備 ERP、PAP 系統資料表規劃與資料關聯設計經驗。
+        en: ""
+      - zh: 熟悉資料正規化、欄位設計、關聯設計與查詢優化,能依業務流程設計可維護的資料結構。
+        en: ""
+      - zh: 具備 Index 經驗,能依查詢條件、排序、關聯查詢與資料量評估索引使用方式。
+        en: ""
+      - zh: 具備 MongoDB 經驗,理解 SQL / NoSQL 實務上差異取捨。
+        en: ""
+      - zh: 使用 Redis 經驗,快取效能優化與降低資料庫查詢壓力的應用情境。
+        en: ""
+      - zh: 使用 PostgreSQL / pgvector 在 RAG 與向量檢索中的應用情境,具備本地環境建置與資料儲存規劃經驗。
+        en: ""
+  - name:
+      zh: DevOps
+      en: DevOps
+    keywords: [Docker, GitHub Actions, GCP Compute Engine, GCP Cloud Run, ELK Stack, Linux]
+    details:
+      - zh: 熟悉 Docker、Docker Compose,具備建立本地開發環境的能力。
+        en: ""
+      - zh: 熟悉 Linux 基礎操作與 VPS 環境管理,具備服務部署與環境設定經驗。
+        en: ""
+      - zh: 熟悉 GCP Cloud Run 部署容器化服務,具備環境變數設定與部署流程操作經驗。
+        en: ""
+      - zh: 熟悉 Git / GitHub 進行多人協作與版本控管流程。
+        en: ""
+      - zh: 具備 Statelessness 無狀態化經驗,降低服務對本機檔案系統依賴。
+        en: ""
+      - zh: 使用 GitHub Actions 建立 CI/CD 流程,具備自動化測試、建置與部署流程規劃經驗。
+        en: ""
+      - zh: 使用 ELK Stack / Filebeat 建置可觀測性架構,規劃 Log 收集、查詢與系統問題追蹤流程。
+        en: ""
+  - name:
+      zh: AI-assisted Development
+      en: AI-assisted Development
+    keywords: [AI Coding Agent, RAG, LLM 整合]
+    details:
+      - zh: 熟悉 AI Coding Agent 協作開發流程設計,能規劃任務流程、行為規則,提升 AI 輔助開發的可控性與可追蹤性。
+        en: ""
+      - zh: 理解 AI Coding Guardrails 核心原則,包含需求釐清優先、簡化設計、控制修改範圍與目標導向驗證。
+        en: ""
+
+projects:
+  - name:
+      zh: OpenClaw Multi-Agent
+      en: OpenClaw Multi-Agent
+    startDate: "2026-05"
+    endDate: ""   # 仍在進行
+    url: ""       # TODO(校對時補):「前往查看」的連結網址
+    description:
+      zh: >-
+        基於 OpenClaw 設計並建立的多 Agent 自動化環境,
+        用於文件處理、任務協調、知識整理與個人工作流程自動化。
+        系統採用職責分離的 Agent 架構,透過多 Agent 分工、排程任務與狀態追蹤,
+        降低單一 Agent 的上下文負擔與職責耦合,
+        並提升自動化流程的可維護性與擴充性。
+      en: ""
+    highlights:
+      - zh: "main-agent:作為主要任務入口與協調中心,負責理解需求、分派任務、追蹤狀態,並整合各 Agent 的執行結果。"
+        en: ""
+      - zh: "operator-agent:負責網站操作、瀏覽器自動化、公開資料擷取與定期閱讀任務,例如每日整理 Anthropic Engineering 技術文章。"
+        en: ""
+      - zh: "converter-agent:負責檔案格式轉換與文件前處理,例如 PDF、Markdown、圖片與其他格式的轉換流程。"
+        en: ""
+      - zh: "rag-agent:負責知識庫整理與檢索流程,將文件內容進行 chunking、metadata 補齊與 domain 分類,並匯入 PostgreSQL / pgvector,支援依主題隔離的 RAG 查詢。"
+        en: ""
+      - zh: "personal-agent:負責私人任務輔助,例如 Gmail 郵件整理、提醒、排程檢查與個人資訊摘要。"
+        en: ""
+
+languages:
+  - language:
+      zh: 英文
+      en: English
+    fluency:
+      zh: 聽/說/讀/寫 中等
+      en: Intermediate
+
+# 求職條件與自傳:僅供 /print(PDF)版面使用,公開網站不渲染
+jobPreference:
+  status:
+    zh: 待業中(錄取後兩週可上班)
+  type:
+    zh: 全職工作・日班
+  salary:
+    zh: 面議
+  locations:
+    zh: 台北市、新北市
+  remote:
+    zh: 對遠端工作有意願
+  desiredPosition:
+    zh: 後端工程師、全端工程師
+
+autobiography:
+  zh: |-
+    • 2019/06–2023/02 於台北捷運任職車輛工程師
+    • 2023/03–2023/09 於勞動部發展署完成後端開發課程
+    • 2023/10–2024/11 於日商 JS-Adways 任職後端工程師,負責 ERP 系統後端開發
+    • 2025/03–2026/04 於采鋐健康整合集團任職軟體工程師,負責醫療病患援助計畫系統(PAP)重構與開發
+
+    期望能將後端開發與系統設計經驗帶入團隊,協助建立穩定的系統,並為產品與公司創造價值。
+    最後,感謝您抽空觀看我的履歷!
+  en: |-
+    • 2019/06–2023/02 Served as a Vehicle Engineer at Taipei Metro.
+    • 2023/03–2023/09 Completed the Backend Development Program at the Workforce Development Agency, Ministry of Labor.
+    • 2023/10–2024/11 Backend Engineer at JS-Adways, responsible for ERP system backend development.
+    • 2025/03–2026/04 Software Engineer at Media-WIND Health Group, responsible for PAP system refactoring and development.
+
+    Thank you for taking the time to review my resume!
