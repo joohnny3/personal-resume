@@ -1,4 +1,4 @@
-目前進度:步驟 1 已產出 resume.yaml,待本人校對(通過後打勾、進入步驟 2)
+目前進度:步驟 2 進行中——專案骨架 + 資料管線
 
 # 個人履歷網站 — 實作小計畫
 
@@ -55,7 +55,7 @@ personal-resume/
 
 ### 清單
 
-- [ ] **步驟 1:舊履歷 → `resume.yaml`(資料轉換與校對)**
+- [x] **步驟 1:舊履歷 → `resume.yaml`(資料轉換與校對)**(2026-07-02 本人校對通過;GitHub/Medium/OpenClaw 連結仍為 TODO,補上後自動出現於網站)
   已從舊履歷 PDF 轉出 `resume.yaml`(公開欄位,對齊 JSON Resume、`{zh, en}` 雙語結構、en 留空)與 `resume.private.yaml`(電話、地址等,不進 git)。
   **做完怎麼確認**:打開兩份 yaml 與舊 PDF 並排逐欄核對——經歷年份、職稱、專案數字(80%、40%、30%、15%)都正確;確認電話地址只在 private 檔。**並補齊檔內標記 TODO 的欄位:GitHub / Medium 連結、OpenClaw 專案連結、(若 PDF 要放)完整地址與生日。你本人校對簽核後才進步驟 2。**
 
