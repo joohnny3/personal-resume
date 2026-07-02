@@ -1,4 +1,4 @@
-目前進度:步驟 2 進行中——專案骨架 + 資料管線
+目前進度:步驟 2 完成(已自驗),請你照清單驗證,通過後進入步驟 3
 
 # 個人履歷網站 — 實作小計畫
 
@@ -59,7 +59,7 @@ personal-resume/
   已從舊履歷 PDF 轉出 `resume.yaml`(公開欄位,對齊 JSON Resume、`{zh, en}` 雙語結構、en 留空)與 `resume.private.yaml`(電話、地址等,不進 git)。
   **做完怎麼確認**:打開兩份 yaml 與舊 PDF 並排逐欄核對——經歷年份、職稱、專案數字(80%、40%、30%、15%)都正確;確認電話地址只在 private 檔。**並補齊檔內標記 TODO 的欄位:GitHub / Medium 連結、OpenClaw 專案連結、(若 PDF 要放)完整地址與生日。你本人校對簽核後才進步驟 2。**
 
-- [ ] **步驟 2:專案骨架 + 資料管線(Next.js 靜態輸出 + 個資分級)**
+- [x] **步驟 2:專案骨架 + 資料管線(Next.js 靜態輸出 + 個資分級)**(2026-07-02 完成;dev 網址為 http://localhost:3000/personal-resume/)
   建 Next.js + TS + Tailwind 專案,設定 `output: 'export'` 與 basePath;寫 yaml 載入 + zod 驗證 + public/print 兩種資料組裝;先用「無樣式」頁面把 public 資料全部吐到畫面上。
   **做完怎麼確認**:`npm run dev` 開 localhost 看到履歷資料(未美化);**在頁面原始碼搜尋電話號碼——必須找不到**;`npm run build` 成功產出 `out/`;`git status` 確認 `resume.private.yaml` 不在追蹤清單。
 

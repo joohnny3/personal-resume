@@ -4,6 +4,7 @@ node_modules/
 out/
 *.log
 *.tsbuildinfo
+next-env.d.ts
 
 # 個資:絕對不進版本庫(repo 將公開給 GitHub Pages 用)
 # 舊履歷原始檔(含電話地址)
