@@ -22,7 +22,17 @@ export function Hero({ basics }: { basics: Resume["basics"] }) {
         </span>
       </div>
       <p className="mt-8 max-w-2xl leading-loose text-ink/90">{basics.summary.zh}</p>
-      <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-muted">
+      <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-ink-muted">
+        <li>
+          {/* 相對路徑:自動落在 basePath 底下;檔案由 npm run pdf / CI 產出 */}
+          <a
+            href="chang-yu-cheng-resume.pdf"
+            download
+            className="rounded-full border border-line px-4 py-1.5 text-ink transition-colors hover:border-vermilion hover:text-vermilion"
+          >
+            下載 PDF 履歷 ↓
+          </a>
+        </li>
         <li>
           <a
             href={`mailto:${basics.email}`}

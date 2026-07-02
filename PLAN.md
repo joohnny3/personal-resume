@@ -1,4 +1,4 @@
-目前進度:步驟 4 完成(已自驗),請你照清單驗證,通過後進入步驟 5(/print + PDF)
+目前進度:步驟 5 完成(已自驗),請你照清單驗證,通過後進入步驟 6(GitHub Pages 上線)
 
 # 個人履歷網站 — 實作小計畫
 
@@ -41,7 +41,7 @@ personal-resume/
 │  ├─ app/
 │  │  ├─ page.tsx           # 一頁式中文履歷(public 資料)
 │  │  └─ print/page.tsx     # A4/ATS 版(public + private)
-├─ scripts/export-pdf.ts    # Playwright 產 PDF
+├─ scripts/export-pdf.mjs   # Playwright 產 PDF
 └─ .github/workflows/       # build + PDF + deploy
 ```
 
@@ -77,7 +77,7 @@ personal-resume/
 
   **求解參數基準**(調校起點,可微調):`SIM_RES 256`・`DYE_RES 1280`・`PRESSURE_ITER 28`・`VEL_DISSIPATION 0.16`・`DYE_DISSIPATION 0.07`・`CURL 14`・`SPLAT_RADIUS 0.0026`・`SPLAT_FORCE 5200`
 
-- [ ] **步驟 5:`/print` 頁 + 本機 PDF 產出(個資分級生效)**
+- [x] **步驟 5:`/print` 頁 + 本機 PDF 產出(個資分級生效)**(2026-07-02 完成;A4 五頁、文字層可選取、個資僅入 PDF)
   做 A4 單欄、ATS 友善的 `/print` 頁(合併 private 欄位);Playwright 腳本 `npm run pdf` 輸出 `public/chang-yu-cheng-resume.pdf`;主頁加下載連結。
   **做完怎麼確認**:本機跑 `npm run pdf` 得到 PDF;打開後為 A4、文字可反白選取(非圖片,ATS 可讀)、電話地址存在;回到主網站原始碼再搜一次電話——依然找不到;點主頁下載連結拿得到檔案。
 

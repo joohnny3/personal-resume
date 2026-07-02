@@ -88,6 +88,20 @@ export const resumeSchema = z.object({
   autobiography: bilingual.optional(),
 });
 
+/** resume.private.yaml:僅 /print(PDF)使用,gitignored、CI 以 Secret 注入 */
+export const privateSchema = z.object({
+  private: z.object({
+    phone: z.string().default(""),
+    address: z
+      .object({ zh: z.string().default(""), en: z.string().default("") })
+      .default({ zh: "", en: "" }),
+    birthday: z.string().default(""),
+    gender: z.object({ zh: z.string().default("") }).default({ zh: "" }),
+    military: z.object({ zh: z.string().default("") }).default({ zh: "" }),
+  }),
+});
+
+export type PrivateInfo = z.infer<typeof privateSchema>["private"];
 export type Resume = z.infer<typeof resumeSchema>;
 export type Bilingual = z.infer<typeof bilingual>;
 export type Work = z.infer<typeof workSchema>;

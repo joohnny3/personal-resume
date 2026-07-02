@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { load } from "js-yaml";
 import { resumeSchema, type Resume } from "./schema";
+import { tidy } from "./tidy";
 
 /**
  * 公開資料源:只讀 resume.yaml。
@@ -11,5 +12,5 @@ import { resumeSchema, type Resume } from "./schema";
 export function getPublicResume(): Resume {
   const file = path.join(process.cwd(), "resume.yaml");
   const raw = load(fs.readFileSync(file, "utf8"));
-  return resumeSchema.parse(raw);
+  return resumeSchema.parse(tidy(raw));
 }
