@@ -1,0 +1,78 @@
+# 改 resume.yaml → push → 網站與 PDF 同步更新(PRD 核心工作流)
+#
+# 個資分級(兩段式建置):
+#   1) 帶 RESUME_PRIVATE_YAML Secret 建置 → 產出含電話地址的 PDF(放進 public/)
+#   2) 不帶 Secret 重新建置 → 部署用的 out/(/print 頁自動不含個資),
+#      public/ 內的 PDF 會一併進 out/
+#   3) 部署前用程式檢查:個資不得出現在任何 HTML/文字檔,只允許在 PDF 裡
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: 安裝 Playwright Chromium(headless shell)
+        run: npx playwright install --with-deps --only-shell chromium
+
+      - name: 建置(含個資)並匯出 PDF
+        env:
+          RESUME_PRIVATE_YAML: ${{ secrets.RESUME_PRIVATE_YAML }}
+        run: npm run pdf
+
+      - name: 重新建置公開網站(不含個資;public/ 的 PDF 一併進 out/)
+        run: npm run build
+
+      - name: 驗證部署產物不含個資(僅 PDF 可有)
+        env:
+          RESUME_PRIVATE_YAML: ${{ secrets.RESUME_PRIVATE_YAML }}
+        run: |
+          PHONE=$(printf '%s' "$RESUME_PRIVATE_YAML" | grep -oP 'phone:\s*\K[^\s#]+' || true)
+          if [ -z "$PHONE" ]; then
+            echo "未設定個資 Secret,略過檢查"
+            exit 0
+          fi
+          if grep -rF --exclude='*.pdf' -- "$PHONE" out/; then
+            echo "::error::個資洩漏:電話號碼出現在部署產物的非 PDF 檔案中"
+            exit 1
+          fi
+          echo "檢查通過:個資僅存在於 PDF"
+
+      - name: 設定 GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: 上傳 Pages 產物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+      - name: 部署
+        id: deployment
+        uses: actions/deploy-pages@v4
