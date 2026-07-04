@@ -1,8 +1,6 @@
 import type { Resume } from "@/data/schema";
 
 export function Hero({ basics }: { basics: Resume["basics"] }) {
-  const profiles = basics.profiles.filter((p) => p.url !== "");
-
   return (
     <section id="top" className="pt-6 sm:pt-10">
       <p className="text-sm tracking-[0.4em] text-vermilion">{basics.label.zh}</p>
@@ -42,18 +40,6 @@ export function Hero({ basics }: { basics: Resume["basics"] }) {
           </a>
         </li>
         <li>{basics.location.city.zh}</li>
-        {profiles.map((p) => (
-          <li key={p.network}>
-            <a
-              href={p.url}
-              target="_blank"
-              rel="noreferrer"
-              className="underline decoration-line underline-offset-4 transition-colors hover:text-vermilion hover:decoration-vermilion"
-            >
-              {p.network}
-            </a>
-          </li>
-        ))}
       </ul>
     </section>
   );

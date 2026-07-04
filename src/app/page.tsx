@@ -1,7 +1,6 @@
 import { Header } from "@/components/Header";
 import { PaperBackground } from "@/components/PaperBackground";
 import { Section } from "@/components/Section";
-import { Education } from "@/components/sections/Education";
 import { Experience } from "@/components/sections/Experience";
 import { Hero } from "@/components/sections/Hero";
 import { Portfolio } from "@/components/sections/Portfolio";
@@ -11,13 +10,13 @@ import { getPublicResume } from "@/data/resume";
 
 export default function Home() {
   const resume = getPublicResume();
-  const { basics, work, education, skills, projects, languages } = resume;
+  const { basics, work, skills, projects } = resume;
 
   return (
     <>
       <PaperBackground />
       <SuminagashiCanvas />
-      <Header name={basics.name.zh} />
+      <Header name={basics.name.zh} profiles={basics.profiles} />
       <main className="mx-auto max-w-4xl px-5 pb-24 pt-24 sm:px-8">
         <Hero basics={basics} />
         <div className="mt-20 space-y-20">
@@ -29,9 +28,6 @@ export default function Home() {
           </Section>
           <Section id="portfolio" title="專案作品集">
             <Portfolio projects={projects} />
-          </Section>
-          <Section id="education" title="學歷">
-            <Education education={education} languages={languages} />
           </Section>
         </div>
       </main>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { MoonIcon, SunIcon } from "./icons";
 
 /** 深淺色手動切換:寫入 localStorage,重整後由 layout 的初始化腳本還原 */
 export function ThemeToggle() {
@@ -26,9 +27,9 @@ export function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label={dark ? "切換為淺色(和紙)" : "切換為深色(夜墨)"}
-      className="flex size-8 select-none items-center justify-center rounded-full border border-line text-sm transition-colors hover:border-vermilion hover:text-vermilion"
+      className="flex size-8 select-none items-center justify-center rounded-full border border-line transition-colors hover:border-vermilion hover:text-vermilion"
     >
-      {dark ? "月" : "日"}
+      {dark ? <MoonIcon className="size-4" /> : <SunIcon className="size-4" />}
     </button>
   );
 }

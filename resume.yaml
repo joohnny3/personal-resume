@@ -35,11 +35,13 @@ basics:
     en: ""
   profiles:
     - network: GitHub
-      username: ""   # TODO(校對時補):GitHub 帳號
-      url: ""        # TODO:https://github.com/<帳號>
+      username: joohnny3
+      url: https://github.com/joohnny3
     - network: Medium
-      username: ""   # TODO(校對時補):Medium 帳號
-      url: ""        # TODO:Medium 個人頁連結
+      username: ""
+      # TODO:此為登入後才有效的後台網址,訪客會被導去登入頁;
+      #       請改成公開個人頁 https://medium.com/@<帳號>
+      url: https://medium.com/me/stories?tab=posts-published
 
 work:
   - company:
