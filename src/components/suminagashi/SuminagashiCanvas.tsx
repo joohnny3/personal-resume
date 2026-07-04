@@ -64,7 +64,7 @@ export function SuminagashiCanvas() {
         ref={canvasRef}
         aria-hidden
         className={
-          "pointer-events-none fixed inset-0 -z-10 h-full w-full transition-opacity duration-1000 " +
+          "suminagashi-mask pointer-events-none fixed inset-0 -z-10 h-full w-full transition-opacity duration-1000 " +
           (ready ? "opacity-100" : "opacity-0")
         }
       />

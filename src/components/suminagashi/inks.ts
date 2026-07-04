@@ -1,9 +1,11 @@
-/** 四種墨色(顯示時經 Beer–Lambert 吸收模型做減法混色,不直接蓋 RGB) */
+/** 墨色盤(顯示時經 Beer–Lambert 吸收模型做減法混色,不直接蓋 RGB) */
 export const INKS = [
   { label: "墨", hex: "#1a1a1f" },
   { label: "藍", hex: "#16407a" },
   { label: "朱", hex: "#c8372d" },
   { label: "松葉", hex: "#2e6e52" },
+  // 低彩度暖色:淺色=茶漬感,深色轉柔金(金泥)
+  { label: "黃土", hex: "#9c6b28" },
 ] as const;
 
 /**

@@ -13,6 +13,8 @@ const profileSchema = z.object({
   network: z.string(),
   username: z.string().default(""),
   url: z.string().default(""),
+  /** 網站上顯示的連結文字;留空則顯示去掉 https:// 的網址 */
+  display: z.string().default(""),
 });
 
 /** 工作經歷底下的子專案(PAP 平台、HRMS…) */

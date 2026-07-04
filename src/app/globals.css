@@ -84,3 +84,29 @@ body {
     color-mix(in srgb, var(--ink) 7%, transparent) 100%
   );
 }
+
+/*
+ * 墨層「內容走廊」遮罩:中央內容欄(max-w-4xl,半寬 448px)後方
+ * 墨只留 ~15% 濃度確保文字可讀,左右留白處保持全濃。
+ * 窄螢幕時 calc 夾住為負值 → 整面均勻 ~15%,行動版閱讀優先。
+ */
+.suminagashi-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    #000 0,
+    #000 calc(50% - 590px),
+    rgb(0 0 0 / 0.17) calc(50% - 430px),
+    rgb(0 0 0 / 0.17) calc(50% + 430px),
+    #000 calc(50% + 590px),
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    #000 0,
+    #000 calc(50% - 590px),
+    rgb(0 0 0 / 0.17) calc(50% - 430px),
+    rgb(0 0 0 / 0.17) calc(50% + 430px),
+    #000 calc(50% + 590px),
+    #000 100%
+  );
+}

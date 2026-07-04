@@ -5,8 +5,9 @@ import { LineIcon } from "@/components/icons";
 import type { Resume } from "@/data/schema";
 
 export function Hero({ basics }: { basics: Resume["basics"] }) {
-  const lineUrl =
-    basics.profiles.find((p) => p.network === "LINE")?.url ?? "";
+  const line = basics.profiles.find((p) => p.network === "LINE");
+  const lineUrl = line?.url ?? "";
+  const lineText = line?.display || lineUrl.replace(/^https?:\/\//, "");
   // 照片放 public/、檔名由 resume.yaml 的 basics.image 指定;
   // 建置時檢查檔案存在才輸出,避免上線後出現破圖
   const hasPhoto =
@@ -78,7 +79,7 @@ export function Hero({ basics }: { basics: Resume["basics"] }) {
             >
               <LineIcon className="size-[18px]" />
               <span className="underline decoration-line underline-offset-4 transition-colors group-hover:decoration-vermilion">
-                {lineUrl.replace(/^https?:\/\//, "")}
+                {lineText}
               </span>
             </a>
           </li>

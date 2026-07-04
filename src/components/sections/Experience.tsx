@@ -16,7 +16,7 @@ export function Experience({ work }: { work: Work[] }) {
               <span className="text-ink/85">{job.company.zh}</span>
             </h3>
             <p className="text-sm tabular-nums text-ink-muted">
-              {ym(job.startDate)} — {job.endDate ? ym(job.endDate) : "至今"}・{job.location.zh}
+              {ym(job.startDate)} — {job.endDate ? ym(job.endDate) : "至今"}
             </p>
           </div>
           {job.summary.zh !== "" && (

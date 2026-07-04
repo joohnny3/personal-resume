@@ -107,8 +107,7 @@ export default function PrintPage() {
                   {job.position.zh}|{job.company.zh}
                 </h3>
                 <p className="text-[9.5pt] text-neutral-600">
-                  {ym(job.startDate)} — {job.endDate ? ym(job.endDate) : "至今"}・
-                  {job.location.zh}
+                  {ym(job.startDate)} — {job.endDate ? ym(job.endDate) : "至今"}
                 </p>
               </div>
               {job.summary.zh !== "" && <p className="mt-1 text-neutral-800">{job.summary.zh}</p>}

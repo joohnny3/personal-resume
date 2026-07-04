@@ -207,6 +207,9 @@ void main () {
   // 纖維讓墨略為咬色,邊緣不死平
   absorption *= 1.0 + 0.18 * (fiber - 0.5);
 
+  // 全域濃度微降 15%:配合內容走廊遮罩提升文字可讀性
+  absorption *= 0.85;
+
   // 減法混色
   vec3 trans = exp(-absorption);
   vec3 litColor = paper * trans;
