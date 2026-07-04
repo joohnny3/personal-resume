@@ -22,6 +22,9 @@ basics:
     zh: 後端工程師
     en: Backend Engineer
   email: johnny31258@gmail.com
+  # 個人照片:把檔案放到 public/ 資料夾,檔名跟這裡一致(正方形裁切最佳);
+  # 檔案不存在時網站自動不顯示照片區塊,留空 "" 則永遠不顯示
+  image: avatar.jpg
   location:
     city:
       zh: 新北市

@@ -1,12 +1,19 @@
 import type { ComponentType } from "react";
-import { GitHubIcon, MediumIcon } from "./icons";
+import {
+  BriefcaseIcon,
+  CodeIcon,
+  GitHubIcon,
+  LayersIcon,
+  MediumIcon,
+} from "./icons";
 import { ThemeToggle } from "./ThemeToggle";
 import type { Resume } from "@/data/schema";
 
+/** 頁內導覽:一律 icon 呈現,滑鼠停留顯示文字(title),螢幕閱讀器讀 aria-label */
 const anchors = [
-  { href: "#skills", label: "技能" },
-  { href: "#experience", label: "經歷" },
-  { href: "#portfolio", label: "作品" },
+  { href: "#skills", label: "技能", Icon: CodeIcon },
+  { href: "#experience", label: "經歷", Icon: BriefcaseIcon },
+  { href: "#portfolio", label: "作品", Icon: LayersIcon },
 ];
 
 const profileIcons: Record<string, ComponentType<{ className?: string }>> = {
@@ -27,35 +34,41 @@ export function Header({
         <a href="#top" className="font-semibold tracking-[0.25em]">
           {name}
         </a>
-        <div className="flex items-center gap-5">
-          <nav className="hidden gap-6 text-sm text-ink-muted sm:flex">
-            {anchors.map((a) => (
-              <a key={a.href} href={a.href} className="transition-colors hover:text-vermilion">
-                {a.label}
+        <div className="flex items-center gap-3 sm:gap-4">
+          <nav aria-label="頁內導覽" className="flex items-center gap-3 sm:gap-4">
+            {anchors.map(({ href, label, Icon }) => (
+              <a
+                key={href}
+                href={href}
+                aria-label={label}
+                title={label}
+                className="text-ink-muted transition-colors hover:text-vermilion"
+              >
+                <Icon className="size-[18px]" />
               </a>
             ))}
           </nav>
-          <div className="flex items-center gap-4">
-            {profiles
-              .filter((p) => p.url !== "" && profileIcons[p.network])
-              .map((p) => {
-                const Icon = profileIcons[p.network];
-                return (
-                  <a
-                    key={p.network}
-                    href={p.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={p.network}
-                    title={p.network}
-                    className="text-ink-muted transition-colors hover:text-vermilion"
-                  >
-                    <Icon className="size-[18px]" />
-                  </a>
-                );
-              })}
-            <ThemeToggle />
-          </div>
+          <span aria-hidden className="h-4 w-px bg-line" />
+          {profiles
+            .filter((p) => p.url !== "" && profileIcons[p.network])
+            .map((p) => {
+              const Icon = profileIcons[p.network];
+              return (
+                <a
+                  key={p.network}
+                  href={p.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={p.network}
+                  title={p.network}
+                  className="text-ink-muted transition-colors hover:text-vermilion"
+                >
+                  <Icon className="size-[18px]" />
+                </a>
+              );
+            })}
+          <span aria-hidden className="h-4 w-px bg-line" />
+          <ThemeToggle />
         </div>
       </div>
     </header>

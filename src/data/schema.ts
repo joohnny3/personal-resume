@@ -74,6 +74,8 @@ export const resumeSchema = z.object({
     nickname: bilingual,
     label: bilingual,
     email: z.email(),
+    /** public/ 底下的照片檔名;空字串 = 不顯示照片 */
+    image: z.string().default(""),
     location: z.object({ city: bilingual }),
     summary: bilingual,
     profiles: z.array(profileSchema),
