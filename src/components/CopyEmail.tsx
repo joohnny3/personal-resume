@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { CheckIcon, CopyIcon } from "./icons";
+import { MailIcon } from "./icons";
 
 /**
  * 點擊複製 Email。
  * mailto: 依賴訪客電腦有設定預設郵件程式,沒有就毫無反應;
  * 複製到剪貼簿對誰都有效,貼到任何信箱都能寄。
+ * 視覺與聯絡列其他項目一致(icon + 文字);複製成功時文字原地短暫變「已複製 ✓」。
  */
 export function CopyEmail({ email }: { email: string }) {
   const [copied, setCopied] = useState(false);
@@ -58,14 +59,20 @@ export function CopyEmail({ email }: { email: string }) {
       aria-label={`複製 Email:${email}`}
       className="group inline-flex cursor-pointer items-center gap-1.5 transition-colors hover:text-vermilion"
     >
-      <span className="underline decoration-line underline-offset-4 transition-colors group-hover:decoration-vermilion">
-        {email}
+      <MailIcon className="size-[18px]" />
+      {/* 疊在原文字上顯示回饋,寬度不變、旁邊的項目不會位移 */}
+      <span className="relative">
+        <span
+          className={`underline decoration-line underline-offset-4 transition-colors group-hover:decoration-vermilion ${
+            copied ? "invisible" : ""
+          }`}
+        >
+          {email}
+        </span>
+        {copied && (
+          <span className="absolute inset-y-0 left-0 text-pine">已複製 ✓</span>
+        )}
       </span>
-      {copied ? (
-        <CheckIcon className="size-3.5 text-pine" />
-      ) : (
-        <CopyIcon className="size-3.5 opacity-70" />
-      )}
       <span aria-live="polite" className="sr-only">
         {copied ? "已複製" : ""}
       </span>

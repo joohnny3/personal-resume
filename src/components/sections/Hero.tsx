@@ -63,10 +63,12 @@ export function Hero({ basics }: { basics: Resume["basics"] }) {
               target="_blank"
               rel="noreferrer"
               title="加 LINE 好友"
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-vermilion"
+              className="group inline-flex items-center gap-1.5 transition-colors hover:text-vermilion"
             >
               <LineIcon className="size-[18px]" />
-              加 LINE 好友
+              <span className="underline decoration-line underline-offset-4 transition-colors group-hover:decoration-vermilion">
+                {lineUrl.replace(/^https?:\/\//, "")}
+              </span>
             </a>
           </li>
         )}
