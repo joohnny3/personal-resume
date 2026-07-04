@@ -23,18 +23,29 @@ basics:
     en: Software Engineer
   email: johnny31258@gmail.com
   # 個人照片:把檔案放到 public/ 資料夾,檔名跟這裡一致(正方形裁切最佳);
-  # 檔案不存在時網站自動不顯示照片區塊,留空 "" 則永遠不顯示
   image: avatar.jpg
   location:
     city:
       zh: 新北市
       en: New Taipei City, Taiwan
+  # 簡介條列(經歷里程碑):「機構 說明」中間請用全形空格「　」,
+  # 半形空格會被建置時的 CJK 空格清理(tidy)吃掉
+  highlights:
+    - zh: 龍華科技大學　化工與材料工程系
+      en: ""
+    - zh: 臺北大眾捷運　車輛工程員
+      en: ""
+    - zh: 勞動部勞動力發展署　後端開發結訓
+      en: ""
+    - zh: 傑思愛德威媒體　企業資源規劃(ERP)系統架構設計與開發
+      en: ""
+    - zh: 采鋐健康整合集團　醫療病患援助計畫(PAP)系統重構與開發
+      en: ""
+  # 簡介收尾段:顯示在條列之後的短分隔線下方
   summary:
     zh: >-
-      畢業於龍華科技大學化工與材料工程系,近三年的軟體工程師經驗,
-      開發過企業資源管理系統(ERP)與醫療病患援助計畫系統(PAP)等專案,
-      以系統可維護性、擴展性與穩定性為核心的開發理念,
-      持續深化系統設計與 AI 應用整合能力。
+      致力於打造易維護、易擴展且穩定的系統。相信清晰的架構與有紀律的開發流程,
+      是產品走得長遠的根基;近年持續將 AI 整合進可控、可驗證的開發流程。
     en: ""
   profiles:
     - network: GitHub
@@ -42,12 +53,9 @@ basics:
       url: https://github.com/joohnny3
     - network: Medium
       username: ""
-      # TODO:此為登入後才有效的後台網址,訪客會被導去登入頁;
-      #       請改成公開個人頁 https://medium.com/@<帳號>
       url: https://medium.com/me/stories?tab=posts-published
     - network: LINE
       username: ""
-      # 加好友連結:顯示在網站簡介的聯絡列與 PDF,不放 header
       url: https://line.me/ti/p/BxEe8nw6dX
 
 work:
@@ -256,7 +264,7 @@ work:
       zh: 臺北大眾捷運股份有限公司
       en: Taipei Metro
     position:
-      zh: 機電工程員(機電技師/工程師)
+      zh: 車輛工程員
       en: Vehicle Engineer
     location:
       zh: 台北市中山區
@@ -266,15 +274,15 @@ work:
     summary:
       zh: ""
       en: ""
-    highlights:
-      - zh: >-
-          耐久性測試和分析:對 500+ 零件進行耐久性測試,分析結果並提出改進策略,
-          提高零件平均使用壽命 30%。
-        en: ""
-      - zh: >-
-          專案和維修管理:與多位原廠工程師合作,優化維修流程和排程管理,
-          縮短專案完成平均時間約 15%。
-        en: ""
+    # highlights:
+    #   - zh: >-
+    #       耐久性測試和分析:對 500+ 零件進行耐久性測試,分析結果並提出改進策略,
+    #       提高零件平均使用壽命 30%。
+    #     en: ""
+    #   - zh: >-
+    #       專案和維修管理:與多位原廠工程師合作,優化維修流程和排程管理,
+    #       縮短專案完成平均時間約 15%。
+    #     en: ""
 
 education:
   - institution:
@@ -288,23 +296,12 @@ education:
       en: Bachelor
     startDate: "2014-09"
     endDate: "2017-06"
-  - institution:
-      zh: 勞動部勞動力發展署
-      en: Workforce Development Agency, Ministry of Labor
-    area:
-      zh: 後端開發課程
-      en: Backend Development Program
-    studyType:
-      zh: 職業訓練
-      en: Training Program
-    startDate: "2023-03"
-    endDate: "2023-09"
 
 skills:
   - name:
       zh: Backend
       en: Backend
-    keywords: [PHP, Laravel, Python, JavaScript]
+    keywords: [Laravel, PHP, Python]
     details:
       - zh: 熟悉 PHP 與 Laravel Framework,能進行 RESTful API 開發、後端功能實作、系統重構與模組化設計。
         en: ""
@@ -329,11 +326,11 @@ skills:
   - name:
       zh: Frontend
       en: Frontend
-    keywords: [Vue 3, HTML, CSS, Bootstrap, Tailwind CSS]
+    keywords: [Vue, JavaScript, Tailwind CSS, Bootstrap]
     details:
       - zh: 具備 Vue3 前端維護經驗,能進行 API 串接、頁面功能調整。
         en: ""
-      - zh: 使用 Bootstrap、Tailwind CSS 進行 UI 樣式調整。
+      - zh: 熟悉 Bootstrap / Tailwind CSS，能依設計稿還原 UI 並處理 RWD 與跨瀏覽器樣式問題。
         en: ""
   - name:
       zh: Database
@@ -355,7 +352,7 @@ skills:
   - name:
       zh: DevOps
       en: DevOps
-    keywords: [Docker, GitHub Actions, GCP Compute Engine, GCP Cloud Run, ELK Stack, Linux]
+    keywords: [Docker, GitHub Actions, GCP Cloud Run, ELK Stack]
     details:
       - zh: 熟悉 Docker、Docker Compose,具備建立本地開發環境的能力。
         en: ""
@@ -374,11 +371,9 @@ skills:
   - name:
       zh: AI-assisted Development
       en: AI-assisted Development
-    keywords: [AI Coding Agent, RAG, LLM 整合]
+    keywords: [Claude Code, Codex]
     details:
-      - zh: 熟悉 AI Coding Agent 協作開發流程設計,能規劃任務流程、行為規則,提升 AI 輔助開發的可控性與可追蹤性。
-        en: ""
-      - zh: 理解 AI Coding Guardrails 核心原則,包含需求釐清優先、簡化設計、控制修改範圍與目標導向驗證。
+      - zh: 設計 AI Coding Agent 協作流程（任務拆解、行為規則、驗證關卡），將 AI 產出納入可控可追蹤的開發流程，降低 review 成本。
         en: ""
 
 projects:
@@ -415,21 +410,6 @@ languages:
     fluency:
       zh: 聽/說/讀/寫 中等
       en: Intermediate
-
-# 求職條件與自傳:僅供 /print(PDF)版面使用,公開網站不渲染
-jobPreference:
-  status:
-    zh: 待業中(錄取後兩週可上班)
-  type:
-    zh: 全職工作・日班
-  salary:
-    zh: 面議
-  locations:
-    zh: 台北市、新北市
-  remote:
-    zh: 對遠端工作有意願
-  desiredPosition:
-    zh: 後端工程師、全端工程師
 
 autobiography:
   zh: |-

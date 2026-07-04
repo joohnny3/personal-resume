@@ -67,7 +67,16 @@ export default function PrintPage() {
         </header>
 
         <PrintSection title="簡介">
-          <p>{basics.summary.zh}</p>
+          {basics.highlights.length > 0 && (
+            <ul className="list-disc space-y-0.5 pl-5">
+              {basics.highlights.map((h) => (
+                <li key={h.zh}>{h.zh}</li>
+              ))}
+            </ul>
+          )}
+          <p className={basics.highlights.length > 0 ? "mt-2" : ""}>
+            {basics.summary.zh}
+          </p>
         </PrintSection>
 
         <PrintSection title="技能">

@@ -77,6 +77,8 @@ export const resumeSchema = z.object({
     /** public/ 底下的照片檔名;空字串 = 不顯示照片 */
     image: z.string().default(""),
     location: z.object({ city: bilingual }),
+    /** 簡介條列(經歷里程碑);summary 為條列後的收尾段 */
+    highlights: z.array(bilingual).default([]),
     summary: bilingual,
     profiles: z.array(profileSchema),
   }),

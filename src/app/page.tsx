@@ -29,9 +29,12 @@ export default function Home() {
               要恢復時把 Section#portfolio 加回來、Header 補回作品 anchor 即可) */}
         </div>
       </main>
-      <footer className="border-t border-line py-8 text-center text-xs text-ink-muted">
-        © {new Date().getFullYear()} {basics.name.zh} — 網站與 PDF 皆由 resume.yaml
-        單一資料源生成
+      {/* 靠左:右下角有墨色盤,置中文字會跟它打架 */}
+      <footer className="border-t border-line py-8 text-xs text-ink-muted">
+        <div className="mx-auto max-w-4xl px-5 sm:px-8">
+          Copyright © {new Date().getFullYear()} Chang Yu Cheng. All rights
+          reserved.
+        </div>
       </footer>
     </>
   );

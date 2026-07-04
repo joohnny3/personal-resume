@@ -46,6 +46,17 @@ export function Hero({ basics }: { basics: Resume["basics"] }) {
               {basics.nickname.zh}
             </span>
           </h1>
+          {basics.highlights.length > 0 && (
+            <>
+              <ul className="mt-8 max-w-2xl list-disc space-y-2 pl-5 leading-relaxed text-ink/90 marker:text-vermilion/60">
+                {basics.highlights.map((h) => (
+                  <li key={h.zh}>{h.zh}</li>
+                ))}
+              </ul>
+              {/* 條列與收尾段之間的短分隔線 */}
+              <span aria-hidden className="mt-8 block h-px w-12 bg-ink/25" />
+            </>
+          )}
           <p className="mt-8 max-w-2xl leading-loose text-ink/90">
             {basics.summary.zh}
           </p>
