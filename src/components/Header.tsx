@@ -1,19 +1,17 @@
 import type { ComponentType } from "react";
 import {
   BriefcaseIcon,
-  CodeIcon,
   GitHubIcon,
-  LayersIcon,
   MediumIcon,
+  WrenchIcon,
 } from "./icons";
 import { ThemeToggle } from "./ThemeToggle";
 import type { Resume } from "@/data/schema";
 
 /** 頁內導覽:一律 icon 呈現,滑鼠停留顯示文字(title),螢幕閱讀器讀 aria-label */
 const anchors = [
-  { href: "#skills", label: "技能", Icon: CodeIcon },
+  { href: "#skills", label: "技能", Icon: WrenchIcon },
   { href: "#experience", label: "經歷", Icon: BriefcaseIcon },
-  { href: "#portfolio", label: "作品", Icon: LayersIcon },
 ];
 
 const profileIcons: Record<string, ComponentType<{ className?: string }>> = {
@@ -31,8 +29,13 @@ export function Header({
   return (
     <header className="fixed inset-x-0 top-0 z-20 border-b border-line bg-paper/75 backdrop-blur-sm transition-colors duration-300">
       <div className="mx-auto flex max-w-4xl items-center justify-between px-5 py-3 sm:px-8">
-        <a href="#top" className="font-semibold tracking-[0.25em]">
-          {name}
+        <a href="#top" title={name} className="transition-opacity hover:opacity-75">
+          {/* 相對路徑:自動落在 basePath 底下 */}
+          <img
+            src="johnny_icon.png"
+            alt={name}
+            className="size-8 rounded-full border border-line object-cover"
+          />
         </a>
         <div className="flex items-center gap-3 sm:gap-4">
           <nav aria-label="頁內導覽" className="flex items-center gap-3 sm:gap-4">

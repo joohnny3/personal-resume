@@ -3,14 +3,13 @@ import { PaperBackground } from "@/components/PaperBackground";
 import { Section } from "@/components/Section";
 import { Experience } from "@/components/sections/Experience";
 import { Hero } from "@/components/sections/Hero";
-import { Portfolio } from "@/components/sections/Portfolio";
 import { Skills } from "@/components/sections/Skills";
 import { SuminagashiCanvas } from "@/components/suminagashi/SuminagashiCanvas";
 import { getPublicResume } from "@/data/resume";
 
 export default function Home() {
   const resume = getPublicResume();
-  const { basics, work, skills, projects } = resume;
+  const { basics, work, skills } = resume;
 
   return (
     <>
@@ -26,9 +25,8 @@ export default function Home() {
           <Section id="experience" title="經歷">
             <Experience work={work} />
           </Section>
-          <Section id="portfolio" title="專案作品集">
-            <Portfolio projects={projects} />
-          </Section>
+          {/* 作品集暫時隱藏(元件保留在 sections/Portfolio.tsx,資料在 resume.yaml,
+              要恢復時把 Section#portfolio 加回來、Header 補回作品 anchor 即可) */}
         </div>
       </main>
       <footer className="border-t border-line py-8 text-center text-xs text-ink-muted">
