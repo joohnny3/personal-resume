@@ -19,8 +19,8 @@ basics:
     zh: Johnny
     en: Johnny
   label:
-    zh: 後端工程師
-    en: Backend Engineer
+    zh: 軟體工程師
+    en: Software Engineer
   email: johnny31258@gmail.com
   # 個人照片:把檔案放到 public/ 資料夾,檔名跟這裡一致(正方形裁切最佳);
   # 檔案不存在時網站自動不顯示照片區塊,留空 "" 則永遠不顯示
@@ -45,6 +45,10 @@ basics:
       # TODO:此為登入後才有效的後台網址,訪客會被導去登入頁;
       #       請改成公開個人頁 https://medium.com/@<帳號>
       url: https://medium.com/me/stories?tab=posts-published
+    - network: LINE
+      username: ""
+      # 加好友連結:顯示在網站簡介的聯絡列與 PDF,不放 header
+      url: https://line.me/ti/p/BxEe8nw6dX
 
 work:
   - company:

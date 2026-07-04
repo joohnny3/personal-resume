@@ -1,10 +1,10 @@
-# 改 resume.yaml → push → 網站與 PDF 同步更新(PRD 核心工作流)
+# 改 resume.yaml → push → 網站自動更新
 #
-# 個資分級(兩段式建置):
-#   1) 帶 RESUME_PRIVATE_YAML Secret 建置 → 產出含電話地址的 PDF(放進 public/)
-#   2) 不帶 Secret 重新建置 → 部署用的 out/(/print 頁自動不含個資),
-#      public/ 內的 PDF 會一併進 out/
-#   3) 部署前用程式檢查:個資不得出現在任何 HTML/文字檔,只允許在 PDF 裡
+# 個資分級:
+#   - 網站(本 workflow)不帶 Secret 建置,任何個資都不會上線;
+#     部署前用程式檢查電話號碼沒出現在產物裡、也沒有任何 PDF 被夾帶
+#   - 含個資的 PDF 已從網站下架(2026-07-04),需要時在本機執行
+#     npm run pdf 產出(讀取本機的 resume.private.yaml)
 name: Deploy to GitHub Pages
 
 on:
@@ -37,31 +37,27 @@ jobs:
 
       - run: npm ci
 
-      - name: 安裝 Playwright Chromium(headless shell)
-        run: npx playwright install --with-deps --only-shell chromium
-
-      - name: 建置(含個資)並匯出 PDF
-        env:
-          RESUME_PRIVATE_YAML: ${{ secrets.RESUME_PRIVATE_YAML }}
-        run: npm run pdf
-
-      - name: 重新建置公開網站(不含個資;public/ 的 PDF 一併進 out/)
+      - name: 建置公開網站(不帶個資 Secret)
         run: npm run build
 
-      - name: 驗證部署產物不含個資(僅 PDF 可有)
+      - name: 驗證部署產物不含個資
         env:
           RESUME_PRIVATE_YAML: ${{ secrets.RESUME_PRIVATE_YAML }}
         run: |
-          PHONE=$(printf '%s' "$RESUME_PRIVATE_YAML" | grep -oP 'phone:\s*\K[^\s#]+' || true)
-          if [ -z "$PHONE" ]; then
-            echo "未設定個資 Secret,略過檢查"
-            exit 0
-          fi
-          if grep -rF --exclude='*.pdf' -- "$PHONE" out/; then
-            echo "::error::個資洩漏:電話號碼出現在部署產物的非 PDF 檔案中"
+          if find out -name '*.pdf' | grep -q .; then
+            echo "::error::網站已下架 PDF,部署產物不應包含任何 PDF 檔案"
             exit 1
           fi
-          echo "檢查通過:個資僅存在於 PDF"
+          PHONE=$(printf '%s' "$RESUME_PRIVATE_YAML" | grep -oP 'phone:\s*\K[^\s#]+' || true)
+          if [ -z "$PHONE" ]; then
+            echo "未設定個資 Secret,略過電話檢查"
+            exit 0
+          fi
+          if grep -rF -- "$PHONE" out/; then
+            echo "::error::個資洩漏:電話號碼出現在部署產物中"
+            exit 1
+          fi
+          echo "檢查通過:部署產物不含個資"
 
       - name: 設定 GitHub Pages
         uses: actions/configure-pages@v5

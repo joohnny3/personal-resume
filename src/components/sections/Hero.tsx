@@ -1,9 +1,12 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { CopyEmail } from "@/components/CopyEmail";
+import { LineIcon } from "@/components/icons";
 import type { Resume } from "@/data/schema";
 
 export function Hero({ basics }: { basics: Resume["basics"] }) {
+  const lineUrl =
+    basics.profiles.find((p) => p.network === "LINE")?.url ?? "";
   // 照片放 public/、檔名由 resume.yaml 的 basics.image 指定;
   // 建置時檢查檔案存在才輸出,避免上線後出現破圖
   const hasPhoto =
@@ -48,21 +51,25 @@ export function Hero({ basics }: { basics: Resume["basics"] }) {
           </p>
         </div>
       </div>
+      {/* 聯絡方式:信箱(點擊複製)與 LINE 加好友;PDF 下載與所在地已依需求移除 */}
       <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-ink-muted">
-        <li>
-          {/* 相對路徑:自動落在 basePath 底下;檔案由 npm run pdf / CI 產出 */}
-          <a
-            href="chang-yu-cheng-resume.pdf"
-            download
-            className="rounded-full border border-line px-4 py-1.5 text-ink transition-colors hover:border-vermilion hover:text-vermilion"
-          >
-            下載 PDF 履歷 ↓
-          </a>
-        </li>
         <li>
           <CopyEmail email={basics.email} />
         </li>
-        <li>{basics.location.city.zh}</li>
+        {lineUrl !== "" && (
+          <li>
+            <a
+              href={lineUrl}
+              target="_blank"
+              rel="noreferrer"
+              title="加 LINE 好友"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-vermilion"
+            >
+              <LineIcon className="size-[18px]" />
+              加 LINE 好友
+            </a>
+          </li>
+        )}
       </ul>
     </section>
   );
