@@ -1,4 +1,4 @@
-目前進度:步驟 5 完成(已自驗),請你照清單驗證,通過後進入步驟 6(GitHub Pages 上線)
+目前進度:✅ 全部完成(2026-07-04 上線)——網址 https://joohnny3.github.io/personal-resume/
 
 # 個人履歷網站 — 實作小計畫
 
@@ -81,6 +81,6 @@ personal-resume/
   做 A4 單欄、ATS 友善的 `/print` 頁(合併 private 欄位);Playwright 腳本 `npm run pdf` 輸出 `public/chang-yu-cheng-resume.pdf`;主頁加下載連結。
   **做完怎麼確認**:本機跑 `npm run pdf` 得到 PDF;打開後為 A4、文字可反白選取(非圖片,ATS 可讀)、電話地址存在;回到主網站原始碼再搜一次電話——依然找不到;點主頁下載連結拿得到檔案。
 
-- [ ] **步驟 6:GitHub Pages 上線 + Actions 自動化**
+- [x] **步驟 6:GitHub Pages 上線 + Actions 自動化**(2026-07-04 完成;repo:github.com/joohnny3/personal-resume,個資以 Actions Secret 注入,workflow 內建個資洩漏檢查)
   建 GitHub repo `personal-resume`(公開);private 內容設為 Actions Secret;workflow:build → Playwright 產 PDF → 部署 Pages;確認 basePath 下所有資源正常。
   **做完怎麼確認**:手機和電腦直接開 `https://<帳號>.github.io/personal-resume/`,五區塊、流體互動、深淺色都正常;從線上網站下載 PDF,打開含電話地址;在 GitHub 網頁介面搜整個 repo——搜不到電話號碼;改 `resume.yaml` 一個字 → push → 幾分鐘後網站與 PDF 都更新。**此步完成 = PRD v1 驗收全數打勾。**
