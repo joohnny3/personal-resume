@@ -21,6 +21,9 @@ public/*.pdf
 # 簽名字標原始 SVG:已 inline 進 SignatureWordmark.tsx,原檔留本機當素材
 /chang-yu-cheng-icon.svg
 
+# 本機參考文件(個人導覽筆記,不進公開 repo)
+/docs/CODEBASE-GUIDE.md
+
 # 本機環境
 .env*
 .DS_Store
