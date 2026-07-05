@@ -20,10 +20,13 @@ export function Hero({ basics }: { basics: Resume["basics"] }) {
     <section id="top" className="pt-6 sm:pt-10">
       <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-10">
         {hasPhoto && (
-          <img
-            src={basics.image}
-            alt={`${basics.name.zh}的照片`}
-            className="size-40 shrink-0 rounded-2xl border border-line object-cover shadow-sm grayscale transition duration-500 hover:grayscale-0 sm:size-44"
+          /* 用 CSS 背景圖而非 <img>:右鍵選單沒有「另存圖片」、也無法拖曳存圖。
+             僅防隨手下載,懂 DevTools 仍拿得到(且只流通 512px 縮圖) */
+          <div
+            role="img"
+            aria-label={`${basics.name.zh}的照片`}
+            style={{ backgroundImage: `url(${basics.image})` }}
+            className="size-40 shrink-0 rounded-2xl border border-line bg-cover bg-center shadow-sm sm:size-44"
           />
         )}
         {showPlaceholder && (

@@ -34,6 +34,7 @@ export function Header({
           <img
             src="johnny_icon.png"
             alt={name}
+            draggable={false}
             className="size-8 rounded-full border border-line object-cover"
           />
         </a>

@@ -16,6 +16,8 @@ public/*.pdf
 
 # 素材原始檔:header 標誌原圖 4MB,只上 public/ 的 128px 縮圖
 /johnny_icon.png
+# 大頭照原圖 2.3MB 備份,只上 public/ 的 512px 縮圖
+/avatar-original.jpg
 
 # 本機環境
 .env*
