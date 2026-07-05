@@ -18,6 +18,8 @@ public/*.pdf
 /johnny_icon.png
 # 大頭照原圖備份(任何格式),只上 public/ 的 512px 縮圖
 /avatar-original.*
+# 簽名字標原始 SVG:已 inline 進 SignatureWordmark.tsx,原檔留本機當素材
+/chang-yu-cheng-icon.svg
 
 # 本機環境
 .env*

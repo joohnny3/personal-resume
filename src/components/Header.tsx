@@ -5,6 +5,7 @@ import {
   MediumIcon,
   WrenchIcon,
 } from "./icons";
+import { SignatureWordmark } from "./SignatureWordmark";
 import { ThemeToggle } from "./ThemeToggle";
 import type { Resume } from "@/data/schema";
 
@@ -29,14 +30,14 @@ export function Header({
   return (
     <header className="fixed inset-x-0 top-0 z-20 border-b border-line bg-paper/75 backdrop-blur-sm transition-colors duration-300">
       <div className="mx-auto flex max-w-4xl items-center justify-between px-5 py-3 sm:px-8">
-        <a href="#top" title={name} className="transition-opacity hover:opacity-75">
-          {/* 相對路徑:自動落在 basePath 底下 */}
-          <img
-            src="johnny_icon.png"
-            alt={name}
-            draggable={false}
-            className="size-8 rounded-full border border-line object-cover"
-          />
+        <a
+          href="#top"
+          aria-label={name}
+          title={name}
+          className="text-ink transition-opacity hover:opacity-75"
+        >
+          {/* 手寫簽名字標,inline SVG + currentColor,深淺色自動反色 */}
+          <SignatureWordmark className="h-8 w-auto" />
         </a>
         <div className="flex items-center gap-3 sm:gap-4">
           <nav aria-label="頁內導覽" className="flex items-center gap-3 sm:gap-4">
