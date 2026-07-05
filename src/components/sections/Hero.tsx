@@ -26,7 +26,7 @@ export function Hero({ basics }: { basics: Resume["basics"] }) {
             role="img"
             aria-label={`${basics.name.zh}的照片`}
             style={{ backgroundImage: `url(${basics.image})` }}
-            className="size-40 shrink-0 rounded-2xl border border-line bg-cover bg-center shadow-sm sm:size-44"
+            className="size-40 shrink-0 rounded-2xl bg-cover bg-center shadow-sm sm:size-44"
           />
         )}
         {showPlaceholder && (
