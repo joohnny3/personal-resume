@@ -28,7 +28,6 @@ basics:
     city:
       zh: 新北市
       en: New Taipei City, Taiwan
-  # 簡介條列(經歷里程碑):「機構 說明」中間請用全形空格「　」,
   # 半形空格會被建置時的 CJK 空格清理(tidy)吃掉
   highlights:
     - zh: 龍華科技大學　化工與材料工程系
@@ -41,7 +40,6 @@ basics:
       en: ""
     - zh: 采鋐健康整合集團　醫療病患援助計畫(PAP)系統重構與開發
       en: ""
-  # 簡介收尾段:顯示在條列之後的短分隔線下方
   summary:
     zh: >-
       致力於開發易維護、易擴展且穩定的系統。相信清晰的架構與有紀律的開發流程，
@@ -56,7 +54,6 @@ basics:
       url: https://medium.com/me/stories?tab=posts-published
     - network: LINE
       username: johnny
-      # display = 網站聯絡列顯示的文字(點擊仍導向 url;留空則顯示網址本身)
       display: line.me@johnny
       url: https://line.me/ti/p/BxEe8nw6dX
 
@@ -74,9 +71,9 @@ work:
     endDate: "2026-04"
     summary:
       zh: >-
-        負責醫療病患援助計畫(PAP)系統重構與醫療專案設定管理功能開發;
-        並進行系統架構調整,包含無狀態化、GitHub Actions CI/CD 建置,
-        以及 ELK Log 查詢與錯誤排查,降低人工開案、部署與後續維護成本。
+        負責醫療病患援助計畫(PAP)系統重構與醫療專案設定管理功能開發；
+        並進行系統架構調整，包含無狀態化、GitHub Actions CI/CD 建置，
+        以及 ELK Log 查詢與錯誤排查，降低人工開案、部署與後續維護成本。
       en: ""
     projects:
       - name:
@@ -86,27 +83,27 @@ work:
         endDate: "2025-08"
         purpose:
           zh: >-
-            PAP 病患援助平台為醫療病患援助計畫的主要服務端,
+            PAP 病患援助平台為醫療病患援助計畫的主要服務端，
             提供病友、醫護人員等不同角色透過同意書簽署、贈藥申請等流程。
           en: ""
         highlights:
           - zh: >-
-              Salesforce API 整合優化:調整 Salesforce API 串接,處理查詢紀錄時使用
-              Laravel Http::pool 並行呼叫多個 Salesforce API,
+              Salesforce API 整合優化：調整 Salesforce API 串接，處理查詢紀錄時使用
+              Laravel Http::pool 並行呼叫多個 Salesforce API，
               降低外部服務 latency 對使用者查詢體驗的影響。
             en: ""
           - zh: >-
-              動態轉址機制開發:開發 PAP 專案 QR Code / LINE 入口的動態轉址流程,
-              讓同一組 QR Code 可依後台設定調整導向頁面,
+              動態轉址機制開發：開發 PAP 專案 QR Code / LINE 入口的動態轉址流程，
+              讓同一組 QR Code 可依後台設定調整導向頁面，
               降低重新產生與更換 QR Code 的維護成本。
             en: ""
           - zh: >-
-              前端功能維護:協助維護 Vue 3 前端,配合後端 API 調整頁面流程、
+              前端功能維護：協助維護 Vue 3 前端，配合後端 API 調整頁面流程、
               表單欄位與資料顯示邏輯。
             en: ""
           - zh: >-
-              後端三層式架構導入:將 PAP 平台中複雜的業務流程從 Controller 中抽離,
-              依照 Controller、Service、Repository 的三層式架構整理程式職責,
+              後端三層式架構導入：將 PAP 平台中複雜的業務流程從 Controller 中抽離，
+              依照 Controller、Service、Repository 的三層式架構整理程式職責，
               降低 Controller 過度肥大的維護成本。
             en: ""
       - name:
@@ -116,15 +113,15 @@ work:
         endDate: "2025-09"
         purpose:
           zh: >-
-            集中管理不同藥廠專案的設定資料,
+            集中管理不同藥廠專案的設定資料，
             主要解決過去新專案建立時依賴人工設定、不同專案客製化成本高的問題。
           en: ""
         highlights:
           - zh: >-
-              專案設定管理平台後端 API 開發:使用 Laravel 12 進行 API 開發,
+              專案設定管理平台後端 API 開發：使用 Laravel 12 進行 API 開發，
               負責專案設定、功能開關、狀態轉換、文件與流程設定等多個設定模組。
-              此平台將原本分散於人工設定、資料庫調整與程式修改的設定流程,
-              集中為 API 統一維護,開新 PAP 專案設定時間由約 2 週縮短至約 2 天,
+              此平台將原本分散於人工設定、資料庫調整與程式修改的設定流程，
+              集中為 API 統一維護，開新 PAP 專案設定時間由約 2 週縮短至約 2 天，
               減少約 80% 人力設定作業時間。
             en: ""
       - name:
@@ -134,31 +131,31 @@ work:
         endDate: "2026-04"
         purpose:
           zh: >-
-            為提升 PAP 系統的穩定性,進行資料庫升級、無狀態化調整、
+            為提升 PAP 系統的穩定性，進行資料庫升級、無狀態化調整、
             GitHub Actions CI/CD 建置。整體目標是降低人工部署、環境差異、
-            跨服務除錯成本,讓 PAP 系統更適合維運追蹤與系統擴充。
+            跨服務除錯成本，讓 PAP 系統更適合維運追蹤與系統擴充。
           en: ""
         highlights:
           - zh: >-
-              CloudSQL 升級與盤點:參與 CloudSQL 升級作業,包含升級前影響評估、
+              CloudSQL 升級與盤點：參與 CloudSQL 升級作業，包含升級前影響評估、
               備份計畫確認、升級後功能驗證與資料完整性檢查。
               並盤點 GCP 主機、資料庫連線、醫藥通 2.0 Schema、Migration 與
-              SQL 使用情境,作為後續 DB 整併與系統搬遷依據。
+              SQL 使用情境，作為後續 DB 整併與系統搬遷依據。
             en: ""
           - zh: >-
-              無狀態化與檔案儲存外部化:將 PAP 系統中的上傳文件、同意書、
-              專案文件與簽章相關檔案調整至 S3 Storage 管理,
-              降低應用服務對本機檔案系統的依賴。此調整讓服務更接近無狀態化,
+              無狀態化與檔案儲存外部化：將 PAP 系統中的上傳文件、同意書、
+              專案文件與簽章相關檔案調整至 S3 Storage 管理，
+              降低應用服務對本機檔案系統的依賴。此調整讓服務更接近無狀態化，
               提升容器化部署與未來水平擴展的可行性。
             en: ""
           - zh: >-
-              GitHub Actions CI/CD 建置:建置 GitHub Actions CI/CD 流程,
+              GitHub Actions CI/CD 建置：建置 GitHub Actions CI/CD 流程，
               將程式碼檢查、測試、建置與部署流程自動化。
-              透過自動化部署流程,降低人工上版造成的遺漏與操作風險。
+              透過自動化部署流程，降低人工上版造成的遺漏與操作風險。
             en: ""
           - zh: >-
-              ELK Log 結構規劃:設計專案 Log 至 ELK 的結構調整規劃,
-              定義 API Log 與敏感資訊處理原則,
+              ELK Log 結構規劃：設計專案 Log 至 ELK 的結構調整規劃，
+              定義 API Log 與敏感資訊處理原則，
               此設計降低無序欄位造成搜尋困難或敏感資料落盤的風險。
             en: ""
 
@@ -175,8 +172,8 @@ work:
     endDate: "2024-11"
     summary:
       zh: >-
-        企業資源規劃(ERP)系統開發,負責 ERP 系統的後端功能實作,
-        包含 HRMS 的跨系統認證與權限管理、事件驅動通知服務,
+        企業資源規劃(ERP)系統開發，負責 ERP 系統的後端功能實作，
+        包含 HRMS 的跨系統認證與權限管理、事件驅動通知服務，
         以及廣告委刊流程與案件異常檢查框架等。
       en: ""
     projects:
@@ -187,21 +184,21 @@ work:
         endDate: "2024-02"
         purpose:
           zh: >-
-            建立公司內部 HRMS 與登入驗證系統,將員工資料、部門組織、
+            建立公司內部 HRMS 與登入驗證系統，將員工資料、部門組織、
             角色權限與跨子系統登入驗證整合。同時作為 ERP 內各子系統的
-            身份識別與權限管理中心,提供 JWT-based 身份驗證與權限查詢機制,
-            讓其他內部系統可統一確認使用者身份,
+            身份識別與權限管理中心，提供 JWT-based 身份驗證與權限查詢機制，
+            讓其他內部系統可統一確認使用者身份，
             並依角色、部門與系統權限判斷可操作範圍。
           en: ""
         highlights:
           - zh: >-
-              JWT 認證機制:實作以 JWT token 為核心的登入驗證,
+              JWT 認證機制：實作以 JWT token 為核心的登入驗證，
               透過 token 驗證使用者身份。此設計讓 ERP 內不同的子系統
-              能共用一致的 Authentication 流程,降低跨系統登入成本。
+              能共用一致的 Authentication 流程，降低跨系統登入成本。
             en: ""
           - zh: >-
-              API 文件整合:導入 L5-Swagger 以程式碼註解方式生成 API 文件,
-              使 API 文件能隨後端程式碼一併更新,
+              API 文件整合：導入 L5-Swagger 以程式碼註解方式生成 API 文件，
+              使 API 文件能隨後端程式碼一併更新，
               降低文件與實作不同步的維護成本。
             en: ""
       - name:
@@ -211,15 +208,15 @@ work:
         endDate: "2024-03"
         purpose:
           zh: >-
-            建立公司內部多渠道通知服務,支援 Email、LINE 等通知渠道。
+            建立公司內部多渠道通知服務，支援 Email、LINE 等通知渠道。
             提供 ERP 各子系統統一的通知任務建立與發送流程。
           en: ""
         highlights:
           - zh: >-
-              Scheduler 與 Queue 發送流程設計:使用 Laravel Scheduler
-              定時掃描待發送通知任務,依發送時間與處理狀態篩選符合條件的資料,
+              Scheduler 與 Queue 發送流程設計：使用 Laravel Scheduler
+              定時掃描待發送通知任務，依發送時間與處理狀態篩選符合條件的資料，
               並將實際發送工作派送至 Queue。透過 Worker 非同步處理
-              Email / LINE 發送,將「任務掃描」與「通知發送」分離。
+              Email / LINE 發送，將「任務掃描」與「通知發送」分離。
             en: ""
       - name:
           zh: Campaign system
@@ -228,22 +225,22 @@ work:
         endDate: "2024-10"
         purpose:
           zh: >-
-            開發公司內部廣告委刊管理系統,支援業務、AE、PM、主管與財務等角色協作,
+            開發公司內部廣告委刊管理系統，支援業務、AE、PM、主管與財務等角色協作，
             涵蓋委刊建立、產品/賣法設定、合約條件、退佣計算、財務報表、
             收入發票紀錄、異常判斷與主管簽核等流程。
           en: ""
         highlights:
           - zh: >-
-              開發委刊案件生命週期管理:實作廣告委刊從建立、送審、執行、
-              財務確認到結案的流程狀態控管,支援 AE、PM、主管與財務等
-              不同角色在同一案件流程中協作,降低跨部門溝通與人工追蹤成本。
+              開發委刊案件生命週期管理：實作廣告委刊從建立、送審、執行、
+              財務確認到結案的流程狀態控管，支援 AE、PM、主管與財務等
+              不同角色在同一案件流程中協作，降低跨部門溝通與人工追蹤成本。
             en: ""
           - zh: >-
-              實作異常檢查框架,降低人工審核成本:使用設計模式 Strategy Pattern
-              設計案件異常檢查機制,將合約、金額、收入、退佣、產品條件等
-              檢查邏輯拆成可擴充策略,並由 Exception Service 統一管理。
-              當新增異常規則時,不需要修改主流程,只需新增對應檢查策略,
-              提升維護性與擴充性,此功能有效協助減少 40% 人工審核時間。
+              實作異常檢查框架，降低人工審核成本：使用設計模式 Strategy Pattern
+              設計案件異常檢查機制，將合約、金額、收入、退佣、產品條件等
+              檢查邏輯拆成可擴充策略，並由 Exception Service 統一管理。
+              當新增異常規則時，不需要修改主流程，只需新增對應檢查策略，
+              提升維護性與擴充性，此功能有效協助減少 40% 人工審核時間。
             en: ""
       - name:
           zh: Audit Log system
@@ -252,13 +249,13 @@ work:
         endDate: "2024-11"
         purpose:
           zh: >-
-            公司員工操作紀錄機制,集中記錄 ERP 各子系統中的登入、
+            公司員工操作紀錄機制，集中記錄 ERP 各子系統中的登入、
             資料異動、審核與操作人員等紀錄。
           en: ""
         highlights:
           - zh: >-
-              操作紀錄寫入流程開發:針對 ERP 子系統設計共用 Audit Log 模組,
-              將操作紀錄邏輯封裝為內部 Composer Package,
+              操作紀錄寫入流程開發：針對 ERP 子系統設計共用 Audit Log 模組，
+              將操作紀錄邏輯封裝為內部 Composer Package，
               提供統一的介面給 HRMS、Campaign、Notify 等子系統使用。
             en: ""
 
@@ -276,15 +273,6 @@ work:
     summary:
       zh: ""
       en: ""
-    # highlights:
-    #   - zh: >-
-    #       耐久性測試和分析:對 500+ 零件進行耐久性測試,分析結果並提出改進策略,
-    #       提高零件平均使用壽命 30%。
-    #     en: ""
-    #   - zh: >-
-    #       專案和維修管理:與多位原廠工程師合作,優化維修流程和排程管理,
-    #       縮短專案完成平均時間約 15%。
-    #     en: ""
 
 education:
   - institution:
@@ -296,7 +284,7 @@ education:
     studyType:
       zh: 大學畢業
       en: Bachelor
-    startDate: "2014-09"
+    startDate: "2013-09"
     endDate: "2017-06"
 
 skills:
@@ -305,32 +293,32 @@ skills:
       en: Backend
     keywords: [Laravel, PHP, Python]
     details:
-      - zh: 熟悉 PHP 與 Laravel Framework,能進行 RESTful API 開發、後端功能實作、系統重構與模組化設計。
+      - zh: 熟悉 PHP 與 Laravel Framework，能進行 RESTful API 開發、後端功能實作、系統重構與模組化設計。
         en: ""
-      - zh: 熟悉 Service / Repository 架構,能將 Controller、Service、Repository 分層,降低 Controller 過度肥大與業務邏輯分散的維護成本。
+      - zh: 熟悉 Service / Repository 架構，能將 Controller、Service、Repository 分層，降低 Controller 過度肥大與業務邏輯分散的維護成本。
         en: ""
-      - zh: 熟悉 JWT Authentication 與 Authorization 設計,具備跨系統登入驗證、角色權限、部門權限與系統頁面權限實作經驗。
+      - zh: 熟悉 JWT Authentication 與 Authorization 設計，具備跨系統登入驗證、角色權限、部門權限與系統頁面權限實作經驗。
         en: ""
-      - zh: 熟悉 Laravel Scheduler、Queue Worker 非同步處理,具備提醒任務、背景排程與狀態追蹤開發經驗。
+      - zh: 熟悉 Laravel Scheduler、Queue Worker 非同步處理，具備提醒任務、背景排程與狀態追蹤開發經驗。
         en: ""
-      - zh: 熟悉使用適合的 Design Pattern 處理複雜商業邏輯,能依照規則變動性、流程分支與擴充需求,將判斷邏輯拆分為可維護、可替換的模組。
+      - zh: 熟悉使用適合的 Design Pattern 處理複雜商業邏輯，能依照規則變動性、流程分支與擴充需求，將判斷邏輯拆分為可維護、可替換的模組。
         en: ""
-      - zh: 熟悉串接第三方 API,具備 Salesforce Apex REST、LINE、LLM 等外部服務整合經驗。
+      - zh: 熟悉串接第三方 API，具備 Salesforce Apex REST、LINE、LLM 等外部服務整合經驗。
         en: ""
-      - zh: 熟悉 L5-Swagger API 文件撰寫,降低文件與實作不同步造成的維護成本。
+      - zh: 熟悉 L5-Swagger API 文件撰寫，降低文件與實作不同步造成的維護成本。
         en: ""
       - zh: 程式碼重視 SOLID、PSR-12 程式碼風格規範撰寫。
         en: ""
-      - zh: 理解 SDD 工作流,在開發前先釐清 High-level、API 規格、資料流程、邊界條件,讓需求、設計與實作方向先對齊,降低後續反覆修改成本。
+      - zh: 理解 SDD 工作流，在開發前先釐清 High-level、API 規格、資料流程、邊界條件，讓需求、設計與實作方向先對齊，降低後續反覆修改成本。
         en: ""
-      - zh: 理解 TDD 工作流,能針對負責功能撰寫 Feature Test / Unit Test,驗證商業邏輯與異常情境,降低功能調整與重構時的回歸風險。
+      - zh: 理解 TDD 工作流，能針對負責功能撰寫 Feature Test / Unit Test，驗證商業邏輯與異常情境，降低功能調整與重構時的回歸風險。
         en: ""
   - name:
       zh: Frontend
       en: Frontend
     keywords: [Vue, JavaScript, Tailwind CSS, Bootstrap]
     details:
-      - zh: 具備 Vue3 前端維護經驗,能進行 API 串接、頁面功能調整。
+      - zh: 具備 Vue3 前端維護經驗，能進行 API 串接、頁面功能調整。
         en: ""
       - zh: 熟悉 Bootstrap / Tailwind CSS，能依設計稿還原 UI 並處理 RWD 與跨瀏覽器樣式問題。
         en: ""
@@ -339,36 +327,36 @@ skills:
       en: Database
     keywords: [MySQL, PostgreSQL, pgvector, MongoDB, Redis]
     details:
-      - zh: 熟悉 MySQL 關聯式資料庫設計,具備 ERP、PAP 系統資料表規劃與資料關聯設計經驗。
+      - zh: 熟悉 MySQL 關聯式資料庫設計，具備 ERP、PAP 系統資料表規劃與資料關聯設計經驗。
         en: ""
-      - zh: 熟悉資料正規化、欄位設計、關聯設計與查詢優化,能依業務流程設計可維護的資料結構。
+      - zh: 熟悉資料正規化、欄位設計、關聯設計與查詢優化，能依業務流程設計可維護的資料結構。
         en: ""
-      - zh: 具備 Index 經驗,能依查詢條件、排序、關聯查詢與資料量評估索引使用方式。
+      - zh: 具備 Index 經驗，能依查詢條件、排序、關聯查詢與資料量評估索引使用方式。
         en: ""
-      - zh: 具備 MongoDB 經驗,理解 SQL / NoSQL 實務上差異取捨。
+      - zh: 具備 MongoDB 經驗，理解 SQL / NoSQL 實務上差異取捨。
         en: ""
-      - zh: 使用 Redis 經驗,快取效能優化與降低資料庫查詢壓力的應用情境。
+      - zh: 使用 Redis 經驗，快取效能優化與降低資料庫查詢壓力的應用情境。
         en: ""
-      - zh: 使用 PostgreSQL / pgvector 在 RAG 與向量檢索中的應用情境,具備本地環境建置與資料儲存規劃經驗。
+      - zh: 使用 PostgreSQL / pgvector 在 RAG 與向量檢索中的應用情境，具備本地環境建置與資料儲存規劃經驗。
         en: ""
   - name:
       zh: DevOps
       en: DevOps
     keywords: [Docker, GitHub Actions, GCP Cloud Run, ELK Stack]
     details:
-      - zh: 熟悉 Docker、Docker Compose,具備建立本地開發環境的能力。
+      - zh: 熟悉 Docker、Docker Compose，具備建立本地開發環境的能力。
         en: ""
-      - zh: 熟悉 Linux 基礎操作與 VPS 環境管理,具備服務部署與環境設定經驗。
+      - zh: 熟悉 Linux 基礎操作與 VPS 環境管理，具備服務部署與環境設定經驗。
         en: ""
-      - zh: 熟悉 GCP Cloud Run 部署容器化服務,具備環境變數設定與部署流程操作經驗。
+      - zh: 熟悉 GCP Cloud Run 部署容器化服務，具備環境變數設定與部署流程操作經驗。
         en: ""
       - zh: 熟悉 Git / GitHub 進行多人協作與版本控管流程。
         en: ""
-      - zh: 具備 Statelessness 無狀態化經驗,降低服務對本機檔案系統依賴。
+      - zh: 具備 Statelessness 無狀態化經驗，降低服務對本機檔案系統依賴。
         en: ""
-      - zh: 使用 GitHub Actions 建立 CI/CD 流程,具備自動化測試、建置與部署流程規劃經驗。
+      - zh: 使用 GitHub Actions 建立 CI/CD 流程，具備自動化測試、建置與部署流程規劃經驗。
         en: ""
-      - zh: 使用 ELK Stack / Filebeat 建置可觀測性架構,規劃 Log 收集、查詢與系統問題追蹤流程。
+      - zh: 使用 ELK Stack / Filebeat 建置可觀測性架構，規劃 Log 收集、查詢與系統問題追蹤流程。
         en: ""
   - name:
       zh: AI-assisted Development
