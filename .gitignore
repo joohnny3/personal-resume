@@ -20,6 +20,8 @@ public/*.pdf
 /avatar-original.*
 # 簽名字標原始 SVG:已 inline 進 SignatureWordmark.tsx,原檔留本機當素材
 /chang-yu-cheng-icon.svg
+# favicon 原始 SVG:已轉成 src/app/icon.svg(加深色自適應),原檔留本機當素材
+/C_icon.svg
 
 # 本機參考文件(個人導覽筆記,不進公開 repo)
 /docs/CODEBASE-GUIDE.md
