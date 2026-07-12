@@ -25,6 +25,8 @@ public/*.pdf
 
 # 本機參考文件(個人導覽筆記,不進公開 repo)
 /docs/CODEBASE-GUIDE.md
+# 進行中任務的步驟清單(本機工作文件)
+/PLAN-signature.md
 
 # 本機環境
 .env*

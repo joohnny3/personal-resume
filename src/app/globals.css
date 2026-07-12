@@ -13,6 +13,8 @@
   --vermilion: #c8372d;
   --indigo: #16407a;
   --pine: #2e6e52;
+  /* 簽名 hover 上色:淺色用朱紅(落款印泥) */
+  --sig-accent: var(--vermilion);
   --noise-opacity: 0.55;
 }
 
@@ -26,6 +28,8 @@
   --vermilion: #d84a3c;
   --indigo: #7c9cc9;
   --pine: #6faa8e;
+  /* 簽名 hover 上色:深色不用紅(夜墨上顯髒),改提亮的白,像墨跡打光 */
+  --sig-accent: #ffffff;
   --noise-opacity: 0.3;
 }
 
@@ -109,4 +113,45 @@ body {
     #000 calc(50% + 590px),
     #000 100%
   );
+}
+
+/*
+ * 簽名 hover「真筆順」上色(SignatureWordmark):
+ * 朱紅簽名蓋一層 SVG mask,mask 內是 24 筆筆芯中心線(白色粗圓頭描邊),
+ * 白描邊「寫」到哪,朱紅就露到哪。
+ *
+ * 編舞採「單一時鐘」:只過渡 .sig-scope 上的 --sig-t(0→1,寫 1.8s;
+ * 移開倒轉回 0,收 0.8s)。每筆從時鐘推導自己的 dashoffset:
+ *   offset = hide × clamp(0, (b − t) × k, 1)
+ * b/k 由產生器按等筆速配好(signature-strokes.ts)。
+ * 單一無延遲過渡:hover 快速進出只會讓時鐘平滑折返,不會有
+ * 「延遲中的過渡被取消後不補排」的殘影;倒轉時鐘天然 = 最後一筆先退。
+ */
+@property --sig-t {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+.sig-scope {
+  --sig-t: 0;
+  transition: --sig-t 0.8s linear; /* 未 hover:倒筆收回 */
+}
+.sig-scope:hover {
+  --sig-t: 1;
+  transition-duration: 1.8s; /* hover:重新簽一次名 */
+}
+.sig-stroke {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dashoffset: calc(
+    var(--dash-hide) * clamp(0, (var(--sig-b) - var(--sig-t)) * var(--sig-k), 1)
+  );
+}
+/* 不支援 @property 的舊瀏覽器:--sig-t 不會內插,hover 直接整支切色(可接受的退場) */
+@media (prefers-reduced-motion: reduce) {
+  .sig-scope {
+    transition: none; /* 直接切色,不播書寫動畫 */
+  }
 }

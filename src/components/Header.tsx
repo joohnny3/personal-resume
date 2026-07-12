@@ -34,7 +34,7 @@ export function Header({
           href="#top"
           aria-label={name}
           title={name}
-          className="text-ink transition-opacity hover:opacity-75"
+          className="text-ink"
         >
           {/* 手寫簽名字標,inline SVG + currentColor,深淺色自動反色 */}
           <SignatureWordmark className="h-8 w-auto" />
